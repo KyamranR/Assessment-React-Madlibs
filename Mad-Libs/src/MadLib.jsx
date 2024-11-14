@@ -1,30 +1,14 @@
-import { useState } from "react";
 import MadlibForm from "./MadlibForm";
 import MadlibStory from "./MadlibStory";
+import useMadlib from "./useMadlib";
 
 const MadLib = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [storyData, setStoryData] = useState({
+  const { isSubmitted, storyData, submitStory, restartGame } = useMadlib({
     noun: "",
     noun2: "",
     adjective: "",
     color: "",
   });
-
-  const handleSubmit = (formData) => {
-    setStoryData(formData);
-    setIsSubmitted(true);
-  };
-
-  const restartGame = () => {
-    setIsSubmitted(false);
-    setStoryData({
-      noun: "",
-      noun2: "",
-      adjective: "",
-      color: "",
-    });
-  };
 
   return (
     <div>
@@ -32,7 +16,7 @@ const MadLib = () => {
       {isSubmitted ? (
         <MadlibStory storyData={storyData} restart={restartGame} />
       ) : (
-        <MadlibForm onSubmit={handleSubmit} />
+        <MadlibForm onSubmit={submitStory} />
       )}
     </div>
   );

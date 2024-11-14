@@ -1,26 +1,17 @@
-import { useState } from "react";
+import useForm from "./useForm";
 
 const MadlibForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
+  const { formData, handleChange, isFormComplete } = useForm({
     noun: "",
     noun2: "",
     adjective: "",
     color: "",
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((data) => ({ ...data, [name]: value }));
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(formData);
   };
-
-  const isFormComplete = Object.values(formData).every(
-    (val) => val.trim() !== ""
-  );
 
   return (
     <form onSubmit={handleSubmit}>
