@@ -1,10 +1,12 @@
 import "./App.css";
+import MadLib from "./MadLib";
 
 function App() {
-  return;
-  <div>
-    <MadLibs />
-  </div>;
+  return (
+    <div>
+      <MadLib />
+    </div>
+  );
 }
 
 export default App;
