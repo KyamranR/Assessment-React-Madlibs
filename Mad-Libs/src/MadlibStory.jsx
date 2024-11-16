@@ -1,4 +1,4 @@
-const MadlibStory = ({ storyData, restart }) => {
+const MadlibStory = ({ storyData = {}, restart }) => {
   const { noun, noun2, adjective, color } = storyData;
 
   return (
